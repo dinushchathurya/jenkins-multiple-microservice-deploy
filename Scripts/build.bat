@@ -6,5 +6,5 @@ for /D %%d in (*) do (
     set "microservice=%%~nd"
 
     rem Build the Docker image for the microservice
-    docker build -t %microservice%:latest "%%d"
+    docker build -t %microservice%:latest .
 )
