@@ -7,4 +7,8 @@ for /D %%d in (*) do (
 
     rem Build the Docker image for the microservice
     docker build -t %microservice%:latest "%%d"
+    if %errorlevel% neq 0 (
+        echo Failed to build Docker image for %microservice%
+        exit /b %errorlevel%
+    )
 )
