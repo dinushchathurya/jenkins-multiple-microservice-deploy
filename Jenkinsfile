@@ -5,9 +5,15 @@ pipeline {
     stages {
         stage('Build and Push Docker Images') {
             steps {
-                sh './Scripts/build.sh'
+                script {
+                    if (isUnix()) {
+                        sh './Scripts/build.sh'
+                    } else {
+                        bat '.\\Scripts\\build.bat'
+                    }
+                }
             }
         }
     }
-    
+
 }
